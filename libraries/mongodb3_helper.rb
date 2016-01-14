@@ -6,6 +6,6 @@ module Mongodb3Helper
   end
 
   def compact_hash(hash)
-    hash.reject{|k,v| v.is_a?(Hash) ? compact_hash(v).empty? : v.nil? }
+    hash.select{|k,v| v.is_a?(Hash) ? compact_hash(v).any? : !v.nil? }
   end
 end
